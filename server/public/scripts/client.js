@@ -59,6 +59,18 @@ function getKoalas(){
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
-  // ajax call to server to get koalas
- 
-}
+  // ajax call to server to save koalas
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: newKoala,
+    }).then(response => {
+      console.log(`Response from server `, newKoala);
+      // TODO Setup renderKoalas function
+      // renderKoalas()
+    }).catch(error => {
+      console.log(`Error in POST `, error);
+      alert('Unable to add Koalas!')
+    });
+
+  }
