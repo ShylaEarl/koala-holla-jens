@@ -19,7 +19,7 @@ function setupClickListeners() {
       name: 'testName',
       age: 'testName',
       gender: 'testName',
-      readyForTransfer: 'testName',
+      ready_to_transer: 'testName',
       notes: 'testName',
     };
     // call saveKoala with the new obejct
@@ -33,7 +33,7 @@ function getKoalas(){
   // ajax call to server to get koalas
   $.ajax({
     type: 'GET',
-    url: '/koala'
+    url: '/koalas'
   }).then(function(response) {
     console.log(response);
     for(let i = 0; i < response.length; i += 1) {
@@ -42,12 +42,12 @@ function getKoalas(){
       $('#viewKoalas').append(`
         <tr>
           <td>${koala.name}</td>
-          <td>${koala.gender}</td>
           <td>${koala.age}</td>
-          <td>${koala.readyForTransfer}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.ready_to_transer}</td>
           <td>${koala.notes}</td>
           <td><button class="transfer-koala" data-id="${koala.id}">Transfer</button></td>
-          <td><button class="remove-koala" data-id="${book.id}">Remove Koala</button></td>
+          <td><button class="remove-koala" data-id="${koala.id}">Remove Koala</button></td>
         </tr>
       `);
     }//end for loop
@@ -74,3 +74,5 @@ function saveKoala( newKoala ){
     });
 
   }
+
+
