@@ -1,7 +1,7 @@
 const express = require('express');
 const koalaRouter = express.Router();
 
-// DB CONNECTION (Johnny, also setting up DB)
+// DB CONNECTION (Johnny/Reese, Johnny setting up DB)
 
 
 // GET (Shyla)
