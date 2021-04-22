@@ -1,13 +1,13 @@
 const express = require('express');
 const koalaRouter = express.Router();
 
-// DB CONNECTION
+// DB CONNECTION (Johnny, also setting up DB)
 
 
-// GET
+// GET (Shyla)
 
 
-// POST
+// POST (Reese)
 
 
 // PUT
