@@ -5,7 +5,7 @@ const koalaRouter = express.Router();
 const pool = require('../modules/pool');
 
 // GET (Shyla)
-router.get('/', (req, res) => {
+koalaRouter.get('/', (req, res) => {
     let queryText = 'SELECT * FROM "koala";';
     pool.query(queryText).then(result => {
       // Sends back the results in an object
@@ -23,10 +23,10 @@ koalaRouter.post('/', (req,res) => {
   let newKoala = req.body;
   console.log('Adding new Koala...', newKoala);
 
-  let queryText = `INSERT INTO "koala" ("name", "gender", "age", "ready_to_transfer", "notes")
+  let queryText = `INSERT INTO "koala" ("name", "age", "gender", "ready_to_transer", "notes")
                   VALUES ($1, $2, $3, $4, $5);`;
 
-  pool.query(queryText, [newKoala.name, newKoala.gender, newKoala.age, newKoala.ready_to_transfer, newKoala.notes]) 
+  pool.query(queryText, [newKoala.name, newKoala.age, newKoala.gender, newKoala.ready_to_transer, newKoala.notes]) 
   .then(result => {
       res.sendStatus(201);
   })  
