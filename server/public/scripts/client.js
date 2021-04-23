@@ -25,6 +25,7 @@ function setupClickListeners() {
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
   }); 
+  $( '#viewKoalas' ).on('click', '.transfer-koala', transferKoalas);
 }
 
 function getKoalas(){
@@ -74,5 +75,21 @@ function saveKoala( newKoala ){
     });
 
   }
+
+function transferKoalas(koalaId) {
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${koalaId}`,
+    data: koalaId
+  })
+  .then(response => {
+    console.log(response);
+
+    getKoalas();
+  })
+  .catch(error => {
+    console.log('Error updating Koalas', error);
+  })
+}
 
 

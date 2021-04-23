@@ -37,8 +37,23 @@ koalaRouter.post('/', (req,res) => {
 })
 
 // PUT
+koalaRouter.put('/:id', (req, res) => {
+  let koalaId = req.params.id;
 
+  let queryText = `UPDATE "koala" SET "ready_to_transer"='True' WHERE= "id"=$1;`;
+
+  pool.query(queryText, [koalaId])
+    .then(response => {
+      console.log('You transfered a KOALA!!!');
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log('Error transfering Koala', error)
+      res.sendStatus(500);
+    })
+})
 
 // DELETE
+
 
 module.exports = koalaRouter;
