@@ -31,6 +31,7 @@ function setupClickListeners() {
     $('#readyForTransferIn').val('');
     $('#notesIn').val('');
   }); 
+  $( '#viewKoalas' ).on('click', '.transfer-koala', transferKoalas);
 }
 
 function getKoalas(){
@@ -82,6 +83,22 @@ function saveKoala( newKoala ){
     });
 
   }
+
+function transferKoalas(koalaId) {
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${koalaId}`,
+    data: koalaId
+  })
+  .then(response => {
+    console.log(response);
+
+    getKoalas();
+  })
+  .catch(error => {
+    console.log('Error updating Koalas', error);
+  })
+}
 
 
 // Adding Delete 
