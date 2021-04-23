@@ -41,7 +41,7 @@ koalaRouter.post('/', (req,res) => {
 koalaRouter.put('/:id', (req, res) => {
   let koalaId = req.params.id;
 
-  let queryText = `UPDATE "koala" SET "ready_to_transer"='True' WHERE= "id"=$1;`;
+  let queryText = `UPDATE "koala" SET "ready_to_transer" = 'True' WHERE "id"=$1;`;
 
   pool.query(queryText, [koalaId])
     .then(response => {
