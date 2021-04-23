@@ -46,6 +46,7 @@ function getKoalas(){
     for(let i = 0; i < response.length; i += 1) {
       let koala = response[i];
       // For each book, append a new row to our table
+      if(koala.ready_to_transer == 'False') {
       $('#viewKoalas').append(`
         <tr>
           <td>${koala.name}</td>
@@ -57,6 +58,20 @@ function getKoalas(){
           <td><button class="remove-koala" data-id="${koala.id}">Remove Koala</button></td>
         </tr>
       `);
+      } else {
+        $('#viewKoalas').append(`
+        <tr>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.ready_to_transer}</td>
+          <td>${koala.notes}</td>
+          <td></td>
+          <td><button class="remove-koala" data-id="${koala.id}">Remove Koala</button></td>
+        </tr>
+      `);
+      }
+
     }//end for loop
     //renderKoalas(response);
   }).catch(function(error){
