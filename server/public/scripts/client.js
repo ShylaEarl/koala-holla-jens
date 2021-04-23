@@ -3,7 +3,7 @@ console.log( 'js' );
 $( document ).ready( function(){
   console.log( 'JQ' );
   // Establish Click Listeners
-  setupClickListeners()
+  setupClickListeners();
   // load existing koalas on page load
   getKoalas();
 
@@ -13,17 +13,21 @@ function setupClickListeners() {
   $( '#addButton' ).on( 'click', function(){
     console.log( 'in addButton on click' );
     // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
     let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      ready_to_transer: 'testName',
-      notes: 'testName',
+      name: $('#nameIn').val(),
+      age: $('#ageIn').val(),
+      gender: $('#genderIn').val(),
+      ready_to_transer: $('#readyForTransferIn').val(),
+      notes: $('#notesIn').val(),
     };
     // call saveKoala with the new obejct
     saveKoala( koalaToSend );
+    //empties inputs on DOM
+    $('#nameIn').val('');
+    $('#ageIn').val('');
+    $('#genderIn').val('');
+    $('#readyForTransferIn').val('');
+    $('#notesIn').val('');
   }); 
 }
 
@@ -68,6 +72,8 @@ function saveKoala( newKoala ){
       console.log(`Response from server `, newKoala);
       // TODO Setup renderKoalas function
       // renderKoalas()
+      //getKoalas renders new koala input from DOM to Table
+      getKoalas();
     }).catch(error => {
       console.log(`Error in POST `, error);
       alert('Unable to add Koalas!')
