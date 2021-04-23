@@ -2,7 +2,7 @@ const pg = require('pg');
 
 const config = {
   database: 'koala_holla', 
-  host: 'localhost', 
+  host: 'Localhost', 
   port: 5432, 
   max: 10, 
   idleTimeoutMillis: 30000 

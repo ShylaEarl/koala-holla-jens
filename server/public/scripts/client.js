@@ -7,6 +7,8 @@ $( document ).ready( function(){
   // load existing koalas on page load
   getKoalas();
 
+  $('#viewKoalas').on('click','.remove-koala', deleteKoala);
+
 }); // end doc ready
 
 function setupClickListeners() {
@@ -81,4 +83,22 @@ function saveKoala( newKoala ){
 
   }
 
+
+// Adding Delete 
+function deleteKoala(koalasId) {
+  $.ajax({
+    method: 'DELETE',
+    url: `/koalas/${koalasId}`
+  })
+    .then(function (response) {
+      getKoalas();
+    })
+    .catch(function (error) {
+      alert('Error on killing koala.', error);
+    })
+}
+
+function deleteKoalasHandler() {
+  deleteKoala($(this).data("id"))
+}
 
