@@ -15,7 +15,7 @@ koalaRouter.get('/', (req, res) => {
       console.log('error getting koalas', error);
       res.sendStatus(500);
     });
-  });
+});
 
 
 // POST (Reese)
